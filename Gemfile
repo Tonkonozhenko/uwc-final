@@ -26,4 +26,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'quiet_assets'
+  gem 'annotate'
 end
