@@ -30,4 +30,9 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'annotate'
+
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
