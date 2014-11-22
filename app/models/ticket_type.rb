@@ -15,6 +15,7 @@
 class TicketType < ActiveRecord::Base
   belongs_to :event
   has_many :promo_codes, as: :promocodable, class: PromoCode
+  has_many :tickets
 
   def price_with_promo(code)
     promo_code = find_promo_code(code)

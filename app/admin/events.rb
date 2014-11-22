@@ -30,11 +30,17 @@ ActiveAdmin.register Event do
     end
 
     panel TicketType.model_name.human(count: 2) do
-      table_for e.ticket_types do
+      table_for e.ticket_types.includes(:tickets) do
         column :title
         column :price
         column :total
         column :remained
+        column :sold do |tt|
+          tt.tickets.count
+        end
+        column :earned do |tt|
+          tt.tickets.pluck(:price).compact.inject(&:+)
+        end
       end
     end
 
