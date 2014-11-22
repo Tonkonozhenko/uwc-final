@@ -18,12 +18,19 @@ class TicketsController < ApplicationController
     if @tickets.any?
       if @tickets.all?(&:valid?) && Ticket.bulk_buy(@tickets)
         flash[:notice] = 'Tickets bought. You can view them at email'
+        send_emails_with_tickets
         render 'tickets/tickets_bought'
       else
         render 'new'
       end
     else
       redirect_to(@event.present? ? event_path(@event) : root_path)
+    end
+  end
+
+  def send_emails_with_tickets
+    @tickets.group_by(&:email).each do |email, tickets|
+      TicketsMailer.ticket_email(email, tickets).deliver
     end
   end
 
