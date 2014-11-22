@@ -6,11 +6,13 @@ sudo -u postgres psql <<EOF
 alter user postgres with password 'postgres';
 EOF
 
+command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 
 curl -sSL https://get.rvm.io | bash -s stable
 
 source /usr/local/rvm/scripts/rvm
+source /home/vagrant/.rvm/scripts/rvm
 
 sudo /usr/local/rvm/bin/rvm requirements
 
