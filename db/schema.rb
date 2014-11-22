@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122100756) do
+ActiveRecord::Schema.define(version: 20141122103336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,27 @@ ActiveRecord::Schema.define(version: 20141122100756) do
     t.text     "description"
     t.datetime "starts_at"
     t.integer  "admin_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "promo_codes", force: true do |t|
+    t.integer  "promocodable_id"
+    t.string   "promocodable_type"
+    t.string   "code"
+    t.integer  "discount_percent"
+    t.integer  "total_applies"
+    t.integer  "remained_applies"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ticket_types", force: true do |t|
+    t.integer  "event_id"
+    t.string   "title"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.integer  "total"
+    t.integer  "remained"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
