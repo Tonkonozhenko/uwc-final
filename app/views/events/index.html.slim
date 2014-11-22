@@ -1,0 +1,13 @@
+.row.events-wrapper
+  .col-md-12
+    h1.page-header Events
+    - collection.includes(:ticket_types).each do |resource|
+      .event
+        - min = resource.ticket_types.minimum(:price)
+        - max = resource.ticket_types.maximum(:price)
+        .pull-right
+          = resource.starts_at.to_s(:short) rescue nil
+          br
+          = [min, max].uniq.join(' - ')
+        h3.title = link_to resource.title, event_path(resource)
+        p = resource.description

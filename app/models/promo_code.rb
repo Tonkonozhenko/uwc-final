@@ -5,6 +5,7 @@
 #  id                :integer          not null, primary key
 #  promocodable_id   :integer
 #  promocodable_type :string(255)
+#  code              :string(255)
 #  discount_percent  :integer
 #  total_applies     :integer
 #  remained_applies  :integer

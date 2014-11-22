@@ -53,6 +53,9 @@ ActiveAdmin.register Event do
         end
         column :total_applies
         column :remained_applies
+        column :edit do |p|
+          link_to 'Edit', edit_admin_promo_code_path(p)
+        end
       end
     end
   end

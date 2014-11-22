@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   root 'events#index'
+  resources :events, only: [:show, :index] do
+    resources :tickets, only: [:show, :index, :create]
+  end
 end

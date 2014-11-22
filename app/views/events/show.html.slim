@@ -1,0 +1,38 @@
+.row.event-wrapper
+  .col-md-12
+    - min = resource.ticket_types.minimum(:price)
+    - max = resource.ticket_types.maximum(:price)
+    .pull-right.date
+      = resource.starts_at.to_s(:short) rescue nil
+      br
+      = [min, max].uniq.join(' - ')
+    h1.page-header = resource.title
+    p = resource.description
+    h3 Ticket
+    - if resource.ticket_types.any?
+      = form_tag event_tickets_path(resource) do
+        = hidden_field_tag :code, params[:code]
+        table.table.table-condensed.table-hover
+          tr
+            th.col-md-3 Title
+            th.col-md-3 Price
+            th.col-md-3 Remained
+            th.col-md-3 Order
+          - resource.ticket_types.each_with_index do |tt, i|
+            tr
+              td = tt.title
+              td = tt.price_with_promo(params[:code])
+              td = tt.remained
+              td
+                = text_field_tag "tickets[#{i}][count]", '', class: 'form-control'
+                = hidden_field_tag "tickets[#{i}][ticket_type_id]", tt.id
+        .text-center
+          = submit_tag 'Buy', class: 'btn btn-primary'
+      = form_tag event_path(resource), method: :get, enforce_utf8: false do
+        .row
+          .col-md-3
+            | Have a promo code?
+            .input-group
+              = text_field_tag :code, params[:code], class: 'form-control', placeholder: 'Promo code'
+              .input-group-btn
+                = submit_tag 'Apply', class: 'btn btn-primary', name: nil

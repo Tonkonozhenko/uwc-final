@@ -1,0 +1,25 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.events-wrapper,
+.event-wrapper {
+  .page-header {
+    border-bottom: 1px solid #2c3e50;
+  }
+
+  .title {
+    margin-top: 0;
+  }
+
+  .event {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.event-wrapper {
+  .date {
+    margin-top: 42px;
+  }
+}

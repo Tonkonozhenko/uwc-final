@@ -1,0 +1,52 @@
+.tickets-wrapper
+  .row
+    .col-md-12
+      h2.page-header Finish buying
+
+      = form_tag event_tickets_path(@event) do
+        = hidden_field_tag :code, params[:code]
+        table.table.table-condensed.table-hover
+          tr
+            th.col-md-2 Title
+            th.col-md-2 Price
+            th.col-md-2 Count
+            th.col-md-3 Name
+            th.col-md-3 Email
+          - @tickets.each_with_index do |t, i|
+            - tt = t.ticket_type
+            tr
+              td = tt.title
+              td = tt.price_with_promo(params[:code])
+              td 1
+              td
+                = text_field_tag "tickets[#{i}][name]", t.name, class: 'form-control'
+                = hidden_field_tag "tickets[#{i}][count]", '1'
+                = hidden_field_tag "tickets[#{i}][ticket_type_id]", tt.id
+                - error = t.errors.messages[:name].presence
+                - if error
+                  span.help-block == error.first
+              td
+                = text_field_tag "tickets[#{i}][email]", t.email, class: 'form-control'
+                - error = t.errors.messages[:email].presence
+                - if error
+                  span.help-block == error.first
+        .row
+          .col-md-4
+            .form-group
+              label for="cc_number" class="control-label" CC number
+              = text_field_tag :cc_number, params[:cc_number], class: 'form-control'
+              - error = @tickets.first.errors.messages[:cc_number].presence
+              - if error
+                span.help-block == error.first
+
+          .col-md-4.col-md-offset-4
+            .form-group
+              label for="code" class="control-label" Promo code
+              .input-group
+                = text_field_tag :code, params[:code], class: 'form-control', placeholder: 'Promo code'
+                .input-group-btn
+                  = submit_tag 'Apply', class: 'btn btn-primary', name: nil
+        .row
+          .col-md-12
+            .text-center
+              = submit_tag 'Buy', class: 'btn btn-primary'

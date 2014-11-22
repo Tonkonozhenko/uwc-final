@@ -1,7 +1,7 @@
 ActiveAdmin.register PromoCode do
   menu false
 
-  actions :index, :new, :create
+  actions :index, :new, :create, :edit, :update
 
   filter :code
   filter :discount_percent

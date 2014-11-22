@@ -1,0 +1,29 @@
+nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="/" UWC Final
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li(class="#{'active' if current_page?(root_path)}")= link_to 'Events', root_path
+      /ul.nav.navbar-nav.navbar-right
+        li
+          a href="#"  Link
+        li.dropdown
+          a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button"
+            | Dropdown
+            span.caret
+          ul.dropdown-menu role="menu"
+            li
+              a href="#"  Action
+            li
+              a href="#"  Another action
+            li
+              a href="#"  Something else here
+            li.divider
+            li
+              a href="#"  Separated link
