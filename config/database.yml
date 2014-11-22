@@ -1,0 +1,19 @@
+defaults: &defaults
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  host: localhost
+  username: postgres
+  password: "159357"
+
+development:
+  <<: *defaults
+  database: uwc_final_development
+
+test:
+  <<: *defaults
+  database: uwc_final_test
+
+production:
+  <<: *defaults
+  database: uwc_final_development
