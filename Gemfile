@@ -16,10 +16,9 @@ gem 'inherited_resources', '~> 1.4.1'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
-gem 'nokogiri'
-gem 'active_model_serializers'
 gem 'select2-rails'
-gem 'kaminari'
+gem 'devise'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
 
 group :development do
   gem 'spring'
