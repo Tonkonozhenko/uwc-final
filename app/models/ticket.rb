@@ -18,6 +18,7 @@ class Ticket < ActiveRecord::Base
 
   belongs_to :ticket_type
   belongs_to :promo_code
+  has_one :event, through: :ticket_type
 
   validates_presence_of :ticket_type, :name, :email
   validate :check_promo_code

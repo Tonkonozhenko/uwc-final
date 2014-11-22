@@ -2,11 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.page-header {
+  border-bottom: 1px solid #2c3e50;
+}
+
 .events-wrapper,
 .event-wrapper {
-  .page-header {
-    border-bottom: 1px solid #2c3e50;
-  }
 
   .title {
     margin-top: 0;

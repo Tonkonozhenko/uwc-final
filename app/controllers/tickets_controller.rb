@@ -1,4 +1,7 @@
 class TicketsController < ApplicationController
+  inherit_resources
+  actions :show
+
   def create
     @event = Event.find(params[:event_id])
 
@@ -14,13 +17,24 @@ class TicketsController < ApplicationController
 
     if @tickets.any?
       if @tickets.all?(&:valid?) && Ticket.bulk_buy(@tickets)
-        redirect_to root_path, notice: 'Tickets bought. You can view them at email'
-        #TODO send email with pdf
+        flash[:notice] = 'Tickets bought. You can view them at email'
+        render 'tickets/tickets_bought'
       else
         render 'new'
       end
     else
       redirect_to(@event.present? ? event_path(@event) : root_path)
+    end
+  end
+
+  def show
+    @ticket = Ticket.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'tickets/show'
+      end
     end
   end
 

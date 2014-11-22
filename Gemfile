@@ -20,6 +20,8 @@ gem 'bootswatch-rails', github: 'maxim/bootswatch-rails'
 gem 'select2-rails'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 
 group :development do
   gem 'spring'

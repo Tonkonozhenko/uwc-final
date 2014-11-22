@@ -1,0 +1,8 @@
+.ticket-wrapper
+  .row
+    .col-md-12
+      h1.page-header = resource.event.title
+      p = "Date: #{resource.event.starts_at.to_s(:short)}"
+      p = "Name: #{resource.name}"
+      p = "Email: #{resource.email}"
+      p = "Price: #{resource.price}"

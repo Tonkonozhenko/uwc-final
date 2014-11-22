@@ -1,0 +1,7 @@
+.bought-tickets-wrapper
+  .row
+    .col-md-12
+      h2.page-header You successfully bought tickets.
+      h4 Now you can view them and we also sent it to emails.
+      - @tickets.each do |ticket|
+        p = link_to "Ticket ##{ticket.id}", ticket_path(ticket, :pdf), target: :blank
